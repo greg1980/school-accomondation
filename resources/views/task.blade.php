@@ -15,5 +15,7 @@
 </div>
 <div class="container">
     <h1-6>Property <span class="badge badge-primary"> Listing</span></h1-6>
+
+   
 </div>
 @endsection
