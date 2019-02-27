@@ -1795,10 +1795,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      tasks: [],
+      message: 'Thanks...'
+    };
+  },
+  methods: {
+    getTasks: function getTasks() {
+      var _this = this;
+
+      window.axios.get('task').then(function (_ref) {
+        var data = _ref.data;
+        data.forEach(function (task) {
+          _this.tasks.push(task);
+        });
+      });
+    }
+  },
+  created: function created() {
+    this.getTasks();
   },
   components: {
     TaskComponent: _Task_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -1824,10 +1843,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
-  }
+  },
+  props: ['task']
 });
 
 /***/ }),
@@ -36874,57 +36897,67 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "app-component" }, [
+    _c("p", [_vm._v("Listing")]),
+    _vm._v(" "),
+    _c("table", { staticClass: "table" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        [
+          _vm._l(_vm.tasks, function(task) {
+            return _c("task-component", { key: task.id, attrs: { task: task } })
+          }),
+          _vm._v(" "),
+          _vm._m(1)
+        ],
+        2
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "app-component" }, [
-      _c("p", [_vm._v("Listing")]),
-      _vm._v(" "),
-      _c("table", { staticClass: "table" }, [
-        _c("thead", [
-          _c("tr", [
-            _c("th", [_vm._v("Task Title")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Priority Level")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Action")])
-          ])
-        ]),
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Task Id")]),
         _vm._v(" "),
-        _c("tbody", [
-          _c("tr", [
-            _c("td", [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "text", id: "task" }
-              })
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "select",
-                { staticClass: "form-control", attrs: { id: "select" } },
-                [
-                  _c("option", [_vm._v("LOW")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("MEDIUM")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("HIGH")])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("td", [
-              _c("button", { staticClass: "btn btn-primary" }, [
-                _vm._v("Submit")
-              ])
-            ])
-          ])
+        _c("th", [_vm._v("Task Title")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Priority Level")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", id: "task" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("select", { staticClass: "form-control", attrs: { id: "select" } }, [
+          _c("option", [_vm._v("LOW")]),
+          _vm._v(" "),
+          _c("option", [_vm._v("MEDIUM")]),
+          _vm._v(" "),
+          _c("option", [_vm._v("HIGH")])
         ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Submit")])
       ])
     ])
   }
@@ -36950,14 +36983,26 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "task-component" },
-    [_c("p", [_vm._v("Task")]), _vm._v(" "), _c("task-component")],
-    1
-  )
+  return _c("tr", [
+    _c("td", [_vm._v(_vm._s(_vm.task.id))]),
+    _vm._v(" "),
+    _c("td", [_vm._v(_vm._s(_vm.task.title))]),
+    _vm._v(" "),
+    _c("td", [_vm._v(_vm._s(_vm.task.priority))]),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("button", { staticClass: "btn btn-danger btn-sm" }, [_vm._v("Remove")])
+    ])
+  }
+]
 render._withStripped = true
 
 

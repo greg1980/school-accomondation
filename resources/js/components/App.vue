@@ -4,13 +4,14 @@
       <table class="table">
           <thead>
               <tr>
+                  <th>Task Id</th>
                   <th>Task Title</th>
                   <th>Priority Level</th>
                   <th>Action</th>
               </tr>
           </thead>
           <tbody>
-            
+              <task-component v-for="task in tasks" :key="task.id" :task="task"></task-component>
               <tr>
                  <td><input type="text" id="task" class="form-control"> </td>
                  <td>
@@ -34,8 +35,28 @@
         export default{
             data(){
                 return{
+
+                    tasks:[ ],
+                    message: 'Thanks...'
                  
                 }
+            },
+
+            methods:{
+
+                getTasks(){
+                    window.axios.get('task').then(({data})=> {
+                      data.forEach(task => {
+                          this.tasks.push(task)
+  
+                      });
+                    });
+                }
+       
+            },
+        
+            created(){
+                this.getTasks();
             },
             components:{TaskComponent}
         }
