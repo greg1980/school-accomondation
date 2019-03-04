@@ -14,7 +14,7 @@
     </div>
 </div>
 <div class="container">
-    <h1-6>Property <span class="badge badge-primary"> Listing</span></h1-6>
+    <h1>Property <span class="badge badge-primary"> Listing</span></h1>
 
    
 </div>

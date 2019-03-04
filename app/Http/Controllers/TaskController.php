@@ -59,7 +59,7 @@ class TaskController extends Controller
      * @param  \App\task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(task $task)
+    public function destroy( $id)
     {
         //
         Task::destroy($id);
