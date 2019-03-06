@@ -1801,6 +1801,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
  // Import stylesheet
 
@@ -1812,7 +1831,8 @@ __webpack_require__.r(__webpack_exports__);
       tasks: [],
       task: {
         title: '',
-        priority: ''
+        priority: '',
+        note: ''
       }
     };
   },
@@ -1836,12 +1856,13 @@ __webpack_require__.r(__webpack_exports__);
           _this2.tasks.push(savedTask.data);
 
           _this2.task.title = '';
+          _this2.task.note = '';
           _this2.isLoading = false;
         });
       }
     },
     checkInputs: function checkInputs() {
-      if (this.task.title && this.task.priority) return true;
+      if (this.task.title && this.task.priority && this.task.note) return true;
     },
     remove: function remove(id) {
       var _this3 = this;
@@ -1880,6 +1901,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -37598,6 +37620,30 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
+                      value: _vm.task.note,
+                      expression: "task.note"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "textarea", id: "notes" },
+                  domProps: { value: _vm.task.note },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.task, "note", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
                       value: _vm.task.title,
                       expression: "task.title"
                     }
@@ -37671,7 +37717,9 @@ var render = function() {
           ],
           2
         )
-      ])
+      ]),
+      _vm._v(" "),
+      _vm._m(1)
     ],
     1
   )
@@ -37685,11 +37733,43 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("Task Id")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Notes")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Task Title")]),
         _vm._v(" "),
         _c("th", [_vm._v("Priority Level")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "form-group col-lg-8 col-sm-12" }, [
+        _c(
+          "div",
+          { staticClass: "col-lg-4 col-sm-4", attrs: { id: "chart" } },
+          [_c("h5", [_vm._v("Notes")])]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-lg-4 col-sm-4", attrs: { id: "Chart1" } },
+          [_c("h5", [_vm._v("Topics")])]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-lg-4 col-sm-14", attrs: { id: "donuts" } },
+          [
+            _c("div", { staticClass: "innerpie" }, [
+              _c("h5", [_vm._v("Total")])
+            ])
+          ]
+        )
       ])
     ])
   }
@@ -37717,6 +37797,8 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("tr", [
     _c("td", [_vm._v(_vm._s(_vm.task.id))]),
+    _vm._v(" "),
+    _c("td", [_vm._v(_vm._s(_vm.task.note))]),
     _vm._v(" "),
     _c("td", [_vm._v(_vm._s(_vm.task.title))]),
     _vm._v(" "),

@@ -31,6 +31,7 @@ class TaskController extends Controller
         // create fake data using faker instance
         $task = new task();
         $task->title = $faker->sentence(1);
+        $task->note = $faker->sentence(1);
         $task->priority = $faker->boolean ? 'low'  : 'high' ;
         $task->save();
 
@@ -48,6 +49,7 @@ class TaskController extends Controller
         $task = new task();
         $task->title = $request->title;
         $task->priority = $request->priority;
+        $task->note = $request->note;
         $task->save();
 
         return response($task->jsonSerialize(), Response::HTTP_CREATED);

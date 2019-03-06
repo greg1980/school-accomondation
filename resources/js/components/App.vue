@@ -6,6 +6,7 @@
           <thead>
               <tr>
                   <th>Task Id</th>
+                   <th>Notes</th>
                   <th>Task Title</th>
                   <th>Priority Level</th>
                   <th>Action</th>
@@ -14,20 +15,38 @@
           <tbody>
               <task-component v-for="task in tasks" :key="task.id" :task="task" @delete="remove"></task-component>
               <tr>
-                 <td><input v-model="task.title" type="text" id="task" class="form-control"> </td>
+                  <td><input v-model="task.note" type="textarea" id="notes" class="form-control"></td>
+                  <td><input v-model="task.title" type="text" id="task" class="form-control"></td>
                  <td>
                      <select v-model="task.priority" id="select" class="form-control">
                          <option>LOW</option>
                          <option>MEDIUM</option>
                          <option>HIGH</option>
-
-                 </select>
+                      </select>
                  </td>
                  <td><button @click="store" class="btn btn-primary">Submit</button></td>
               </tr>
               
           </tbody>
       </table>
+      <!-- donughts -->
+        <div class="container">
+            <div class="form-group col-lg-8 col-sm-12">
+            <div id="chart" class="col-lg-4 col-sm-4">
+                <h5>Notes</h5>
+            </div>
+            <div id="Chart1" class="col-lg-4 col-sm-4">
+                <h5>Topics</h5>
+            </div>
+            <div id="donuts" class="col-lg-4 col-sm-14">
+                <div class="innerpie">
+                    <h5>Total</h5>
+                </div>
+            </div>
+          </div>
+        </div>
+      <!-- end of donughts -->
+
   </div>
 </template>
 
@@ -41,7 +60,7 @@
                 return{
                     isLoading:false,
                     tasks:[],
-                    task: {title: '', priority: '' }
+                    task: {title: '', priority: '', note: '' }
                 }
             },
 
@@ -61,6 +80,7 @@
                     window.axios.post('task', this.task).then(savedTask =>{
                         this.tasks.push(savedTask.data);
                         this.task.title = '';
+                        this.task.note= '';
                         this.isLoading = false;
                     })
 
@@ -70,7 +90,7 @@
 
                 checkInputs(){
 
-                    if(this.task.title && this.task.priority) return true;
+                    if(this.task.title && this.task.priority && this.task.note) return true;
                 },
                
                 remove(id) {
