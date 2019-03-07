@@ -41,6 +41,7 @@
             <div id="donuts" class="col-lg-4 col-sm-14">
                 <div class="innerpie">
                     <h5>Total</h5>
+                    <span class="total">{{total+title}}</span>
                 </div>
             </div>
           </div>
@@ -60,7 +61,11 @@
                 return{
                     isLoading:false,
                     tasks:[],
-                    task: {title: '', priority: '', note: '' }
+                    task: {title: '', priority: '', note: '' },
+                    total: 0,
+                    title:0,
+                    notes:0
+                
                 }
             },
 
@@ -104,7 +109,7 @@
                      
                     });
                     
-                }
+                },
             
             },
         

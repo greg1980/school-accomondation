@@ -1820,6 +1820,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
  // Import stylesheet
 
@@ -1833,7 +1834,10 @@ __webpack_require__.r(__webpack_exports__);
         title: '',
         priority: '',
         note: ''
-      }
+      },
+      total: 0,
+      title: 0,
+      notes: 0
     };
   },
   methods: {
@@ -37719,7 +37723,27 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(1)
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "form-group col-lg-8 col-sm-12" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-lg-4 col-sm-14", attrs: { id: "donuts" } },
+            [
+              _c("div", { staticClass: "innerpie" }, [
+                _c("h5", [_vm._v("Total")]),
+                _vm._v(" "),
+                _c("span", { staticClass: "total" }, [
+                  _vm._v(_vm._s(_vm.total + _vm.title))
+                ])
+              ])
+            ]
+          )
+        ])
+      ])
     ],
     1
   )
@@ -37747,31 +37771,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "form-group col-lg-8 col-sm-12" }, [
-        _c(
-          "div",
-          { staticClass: "col-lg-4 col-sm-4", attrs: { id: "chart" } },
-          [_c("h5", [_vm._v("Notes")])]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-lg-4 col-sm-4", attrs: { id: "Chart1" } },
-          [_c("h5", [_vm._v("Topics")])]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-lg-4 col-sm-14", attrs: { id: "donuts" } },
-          [
-            _c("div", { staticClass: "innerpie" }, [
-              _c("h5", [_vm._v("Total")])
-            ])
-          ]
-        )
-      ])
-    ])
+    return _c(
+      "div",
+      { staticClass: "col-lg-4 col-sm-4", attrs: { id: "chart" } },
+      [_c("h5", [_vm._v("Notes")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "col-lg-4 col-sm-4", attrs: { id: "Chart1" } },
+      [_c("h5", [_vm._v("Topics")])]
+    )
   }
 ]
 render._withStripped = true

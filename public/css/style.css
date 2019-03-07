@@ -65,3 +65,9 @@
 .fa {
     font-weight: 900;
 }
+
+.total {
+    position: absolute;
+    margin-left: 50%;
+    margin-top: 40%;
+}

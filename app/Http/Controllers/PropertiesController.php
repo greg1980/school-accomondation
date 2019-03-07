@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Product;
 use Illuminate\Http\Request;
 
 class PropertiesController extends Controller
@@ -13,8 +13,11 @@ class PropertiesController extends Controller
      */
     public function index()
     {
-        //
-        return view('listing');
+        //    return view('listing');
+        $products = Product::orderBy('year', 'ASC')->get();
+        return response()->json($products);
+
+
     }
 
     /**
@@ -35,7 +38,12 @@ class PropertiesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product();
+        $product->name = $request->name;
+        $product->year = $request->year;
+        $product->price = $product->price;
+        $product->save();
+        return response()->json(['sucess'=>'The product was created successfully']);
     }
 
     /**
